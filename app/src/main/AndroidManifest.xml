@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jac.cs.myapplication" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <activity
+            android:name=".AddCourseActivity"
+            android:label="Add Class" >
+        </activity>
+
+        <activity
+            android:name=".AddAssignmentActivity"
+            android:label="Add Assignment" >
+        </activity>
+
+        <activity
+            android:name=".AssignmentListActivity"
+            android:label="Assignments" >
+        </activity>
+
+        <activity
+            android:name=".ModifyAssignment"
+            android:label="Modify Assignments" >
+        </activity>
+
+        <activity
+            android:name=".CourseListActivity"
+            android:label="Courses" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

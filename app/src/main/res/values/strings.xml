@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <string name="AssignmentName">Assignment</string>
+    <string name="AssignmentWorth">Worth (%)</string>
+    <string name="TimeSpent">Time Spent:</string>
+    <string name="TimeGoal">Goal (Hours)</string>
+    <string name="action_save">Save</string>
+    <string name="action_add">Add</string>
+    <string name="action_debug">Debug</string>
+    <string name="AddTime">Add Time</string>
+    <string name="AddTimeButton">Add Time</string>
+    <string name="SaveAssignment">Save</string>
+    <string name="DiscardAssignment">Discard</string>
+    <string name="TimeSpentHours">Hours</string>
+    <string name="TimeSpentMinutes">Minutes</string>
+    <string name="AssignmentStatus">Status</string>
+    <string name="AssignmentDueDate">Due Date:</string>
+    <string name="action_placeholder">temp</string>
+</resources>
