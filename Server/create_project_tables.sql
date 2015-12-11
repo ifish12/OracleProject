@@ -2,65 +2,65 @@ drop database assignment6;
 CREATE DATABASE assignment6 CHARACTER SET utf8 COLLATE utf8_bin;
 use assignment6;
 
-CREATE TABLE Programs
+CREATE TABLE programs
 (
-	ProgramId INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	ProgramCode varchar(25) NOT NULL,
-	ProgramName varchar(25) NOT NULL
+	programId INT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	programCode varchar(25) NOT NULL,
+	programName varchar(25) NOT NULL
 );
 
-CREATE TABLE Students
+CREATE TABLE students
 (
-	StudentId INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	Password varchar(25) NOT NULL,
-	FirstName varchar(50) NOT NULL,
-	LastName varchar(50) NOT NULL,
-	Sex varchar(1),
-	ProgramId INT(3),
+	studentId INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	password varchar(25) NOT NULL,
+	firstName varchar(50) NOT NULL,
+	lastName varchar(50) NOT NULL,
+	sex varchar(1),
+	programId INT(3),
 
-	CONSTRAINT FK_STUDENTS_PROGRAMID FOREIGN KEY (ProgramId) REFERENCES Programs(ProgramId)
+	CONSTRAINT FK_STUDENTS_PROGRAMID FOREIGN KEY (ProgramId) REFERENCES programs(ProgramId)
 
 ) AUTO_INCREMENT = 1500000;
 
-CREATE TABLE Courses
+CREATE TABLE courses
 (
-	CourseId INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	CourseCode varchar(12) NOT NULL,
-	CourseName varchar(25) NOT NULL,
-	TeacherName varchar(50),
-	Room varchar(15) 
+	courseId INT(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	courseCode varchar(12) NOT NULL,
+	courseName varchar(25) NOT NULL,
+	teacherName varchar(50),
+	room varchar(15) 
 );
 
-CREATE TABLE Assignments
+CREATE TABLE assignments
 (
-	AssignmentId INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	AssignmentName varchar(25) NOT NULL,
-	AssignmentWorth int(3), 
-	CourseId INT(4) NOT NULL,
-	DueDate DateTime,
+	assignmentId INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	assignmentName varchar(25) NOT NULL,
+	assignmentWorth int(3), 
+	courseId INT(4) NOT NULL,
+	dueDate DateTime,
 
-	CONSTRAINT FK_ASSIGNMENTS_COURSEID FOREIGN KEY (CourseId) REFERENCES Courses(CourseId) 
+	CONSTRAINT FK_ASSIGNMENTS_COURSEID FOREIGN KEY (CourseId) REFERENCES courses(CourseId) 
 );
 
-CREATE TABLE Enrollment
+CREATE TABLE enrollment
 (
-	EnrollmentId INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	StudentId INT(8),
-	CourseId INT(4),
+	enrollmentId INT(12) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	studentId INT(8),
+	courseId INT(4),
 
-	CONSTRAINT FK_ENROLLMENT_STUDENTID FOREIGN KEY (StudentId) REFERENCES Students(StudentId),
-	CONSTRAINT FK_ENROLLMENT_COURSEID FOREIGN KEY (CourseId) REFERENCES Courses(CourseId)
+	CONSTRAINT FK_ENROLLMENT_STUDENTID FOREIGN KEY (studentId) REFERENCES students(StudentId),
+	CONSTRAINT FK_ENROLLMENT_COURSEID FOREIGN KEY (courseId) REFERENCES courses(CourseId)
 );
 
-CREATE TABLE StudentAssignments
+CREATE TABLE studentAssignments
 (
-	StudentAssignmentId INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	StudentId INT(8),
-	AssignmentId INT(8),
-	TimeSpent INT(3),
-	Goal INT(3),
-	CONSTRAINT FK_STUDENTASSIGNMENT_STUDENTID FOREIGN KEY (StudentId) REFERENCES Students(StudentId),
-	CONSTRAINT FK_STUDENTASSIGNMENT_ASSIGNMENTID FOREIGN KEY (AssignmentId) REFERENCES Assignments(AssignmentId)
+	studentAssignmentId INT(8) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	studentId INT(8),
+	assignmentId INT(8),
+	timeSpent INT(3),
+	goal INT(3),
+	CONSTRAINT FK_STUDENTASSIGNMENT_STUDENTID FOREIGN KEY (StudentId) REFERENCES students(StudentId),
+	CONSTRAINT FK_STUDENTASSIGNMENT_ASSIGNMENTID FOREIGN KEY (AssignmentId) REFERENCES assignments(AssignmentId)
 
 );
 
