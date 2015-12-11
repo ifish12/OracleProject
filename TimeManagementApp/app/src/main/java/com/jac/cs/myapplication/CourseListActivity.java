@@ -10,9 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 
-import com.jac.cs.myapplication.async.AsyncResponse;
-import com.jac.cs.myapplication.async.GetStudentCourses;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,28 +24,16 @@ public class CourseListActivity extends Activity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
 
-        GetStudentCourses task = new GetStudentCourses(new AsyncResponse<List<Course>>() {
-            @Override
-            public void onAsyncPostExecute(List<Course> result) {
 
-                /* populating the course data has to take place here,
-                    because the async tasks runs while the next set of
-                     code executes, which is no good.
-
-                     so ... when the async task is done executing,
-                     this section of code will run
-                */
-            }
-        });
-        task.execute("1500001");
-
-        /* The stuff below goes up in the onAsyncPostExecute */
         final List<Course> myList = new ArrayList<Course>();
+
 
         Course course1 = new Course();
         course1.setCatID(1);
