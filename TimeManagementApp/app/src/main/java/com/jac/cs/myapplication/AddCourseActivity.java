@@ -35,25 +35,25 @@ public class AddCourseActivity extends Activity {
        // categories = dbh.getCategoryTable().getAllCategories();
         final List<Course> myList=new ArrayList<Course>();
 
-        Course course1 = new Course();
-        course1.setCatID(1);
-        course1.setTitle("French");
-        course1.setId(1);
-
-        Course course2 = new Course();
-        course2.setCatID(2);
-        course2.setTitle("Sexual Health");
-        course2.setId(2);
-
-        Course course3 = new Course();
-        course3.setCatID(3);
-        course3.setTitle("Human Relations");
-        course3.setId(3);
-
-
-        myList.add(course1);
-        myList.add(course2);
-        myList.add(course3);
+//        Course course1 = new Course();
+//        course1.setCatID(1);
+//        course1.setTitle("French");
+//        course1.setId(1);
+//
+//        Course course2 = new Course();
+//        course2.setCatID(2);
+//        course2.setTitle("Sexual Health");
+//        course2.setId(2);
+//
+//        Course course3 = new Course();
+//        course3.setCatID(3);
+//        course3.setTitle("Human Relations");
+//        course3.setId(3);
+//
+//
+//        myList.add(course1);
+//        myList.add(course2);
+//        myList.add(course3);
 
 
        // mTitle      = (TextView)findViewById(R.id.main_editTitle);

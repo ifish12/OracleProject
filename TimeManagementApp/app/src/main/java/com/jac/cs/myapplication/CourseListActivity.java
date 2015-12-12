@@ -1,8 +1,11 @@
 package com.jac.cs.myapplication;
 
 import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +21,7 @@ import java.util.List;
 
 public class CourseListActivity extends Activity {
 
-    private List<Course> mClases;
+    private List<Course> mCourses;
 
 
     private ListView mNotesListView;
@@ -31,6 +34,7 @@ public class CourseListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
+        mNotesListView = (ListView)findViewById(R.id.notes_listView);
 
         GetStudentCourses task = new GetStudentCourses(new AsyncResponse<List<Course>>() {
             @Override
@@ -43,37 +47,19 @@ public class CourseListActivity extends Activity {
                      so ... when the async task is done executing,
                      this section of code will run
                 */
+                mCourses = result;
+
+                Log.d("JSON Data:", mCourses.toString());
+                CoursesArrayAdapter adapter = new CoursesArrayAdapter(CourseListActivity.this, mCourses);
+
+                mNotesListView.setAdapter(adapter);
+
+
             }
         });
         task.execute("1500001");
 
-        /* The stuff below goes up in the onAsyncPostExecute */
-        final List<Course> myList = new ArrayList<Course>();
-
-        Course course1 = new Course();
-        course1.setCatID(1);
-        course1.setTitle("English");
-        course1.setId(1);
-
-        Course course2 = new Course();
-        course2.setCatID(2);
-        course2.setTitle("Math");
-        course2.setId(2);
-
-        Course course3 = new Course();
-        course3.setCatID(3);
-        course3.setTitle("Programming");
-        course3.setId(3);
-
-
-        myList.add(course1);
-        myList.add(course2);
-        myList.add(course3);
-
-        CoursesArrayAdapter adapter = new CoursesArrayAdapter(this, myList);
-        mNotesListView = (ListView) this.findViewById(R.id.notes_listView);
-        mNotesListView.setAdapter(adapter);
-
+        
         mNotesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
