@@ -15,11 +15,11 @@ import org.json.JSONTokener;
 import java.io.IOException;
 import java.util.List;
 
-public class GetStudentCourses extends AsyncTask<String, Void, List<Course>> {
+public class GetAllCourses extends AsyncTask<String, Void, List<Course>> {
 
     private AsyncResponse<List<Course>> delegate;
 
-    public GetStudentCourses(AsyncResponse<List<Course>> delegate) {
+    public GetAllCourses(AsyncResponse<List<Course>> delegate) {
         this.delegate = delegate;
     }
 
@@ -27,6 +27,7 @@ public class GetStudentCourses extends AsyncTask<String, Void, List<Course>> {
     protected void onPostExecute(List<Course> courses) {
 
 
+        //Log.d("JSON Data:", courses.toString());
         delegate.onAsyncPostExecute(courses);
     }
 
@@ -35,9 +36,7 @@ public class GetStudentCourses extends AsyncTask<String, Void, List<Course>> {
 
         List<Course> studentClasses = null;
         try {
-            String studentId = params[0];
-
-            HttpResponse response = HttpJsonRequest.make("http://159.203.29.133:9998/student/" + studentId+ "/courses", "GET");
+             HttpResponse response = HttpJsonRequest.make("http://159.203.29.133:9998/courses", "GET");
 
             JSONObject root = new JSONObject(new JSONTokener(response.getBody()));
 
@@ -45,7 +44,7 @@ public class GetStudentCourses extends AsyncTask<String, Void, List<Course>> {
 
             String json = root.toString();
 
-           Log.d("JSON Data:", json);
+            Log.d("JSON Data:", json);
 
         } catch (IOException e) {
             e.printStackTrace();
