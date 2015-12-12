@@ -59,66 +59,15 @@ public class CourseListActivity extends Activity {
         });
         task.execute("1500001");
 
-        
+
         mNotesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //myItemClick(contacts.get(position).toString());
-                //Toast.makeText(CourseListActivity.this, myList.get(position).toString(), Toast.LENGTH_LONG).show();
                 Intent temp = new Intent(view.getContext(), AssignmentListActivity.class);
                 startActivity(temp);
             }
         });
 
-//        mNotesListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-//                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(NoteListActivity.this);
-//                dialogBuilder.setTitle("Delete Note?");
-//
-//                View dialog_layout = getLayoutInflater().inflate(R.layout.alert_dialog_view, null);
-//
-//                dialog_layout.setBackgroundColor(Color.TRANSPARENT); // Make our custom view match the background of the AlertDialog
-//
-//                // Create the text field in the alert dialog...
-//                TextView title = (TextView) dialog_layout.findViewById(R.id.title_text_alert);
-//                TextView description = (TextView) dialog_layout.findViewById(R.id.description_text_alert);
-//
-//                title.setText(mNotes.get(position).getTitle());
-//                description.setText(mNotes.get(position).getComment());
-//
-//                dialogBuilder.setView(dialog_layout); // Assigning our custom view to the dialog
-//
-//                dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogIn®terface dialog, int which) {
-//                        Log.d("Delete Placeholder", mNotes.get(position).toString());
-//                        dbh.getNotesTable().deleteNote(mNotes.get(position));
-//                        mNotes = dbh.getNotesTable().getAllNotes();
-//
-//
-//                        NotesArrayAdapter adapter = new NotesArrayAdapter(NoteListActivity.this, mNotes);
-//                        mNotesListView = (ListView)NoteListActivity.this.findViewById(R.id.notes_listView);
-//                        mNotesListView.setAdapter(adapter);
-//                    }
-//                });
-//
-//                dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.cancel();
-//                    }
-//                });
-//
-//                dialogBuilder.show();
-//                return true;
-//            }
-//        });
-
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override

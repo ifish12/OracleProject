@@ -107,40 +107,6 @@ public class Course {
 
     }
 
-//    public Course(String classTitle, long classCatID) {
-//        this.classTitle = classTitle;
-//        this.classCatID = classCatID;
-//    }
-
-//    public long getId() {
-//        return id;
-//    }
-//
-//    public void setId(long id) {
-//        this.id = id;
-//    }
-//
-//    public String getTitle() {
-//        return classTitle;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.classTitle = title;
-//    }
-//
-//
-//
-//    public long getCatID() {
-//        return classCatID;
-//    }
-//
-//    public void setCatID(long catID) {
-//        this.classCatID = catID;
-//    }
-
-//    public String toString() {
-//        return noteTitle;
-//    }
 
     @Override
     public String toString() {

@@ -32,41 +32,6 @@ public class CoursesArrayAdapter extends ArrayAdapter<Course> {
         return getItem(position).getId();
     }
 
-//    public String getCatetory(int position) {
-//
-//
-//        final List<Course> myList=new ArrayList<Course>();
-//        //Course entry1=new Course();
-//        // Course entry2=new Course();
-//
-//        //myList.add(entry1);
-//        //myList.add(entry2);
-//
-//
-//        Course course1 = new Course();
-//        course1.setCatID(1);
-//        course1.setTitle("English");
-//        course1.setId(1);
-//
-//        Course course2 = new Course();
-//        course2.setCatID(2);
-//        course2.setTitle("Math");
-//        course2.setId(2);
-//
-//        Course course3 = new Course();
-//        course3.setCatID(3);
-//        course3.setTitle("Programming");
-//        course3.setId(3);
-//
-//
-//        myList.add(course1);
-//        myList.add(course2);
-//        myList.add(course3);
-//
-//        //DatabaseHandler dbh = new DatabaseHandler(getContext());
-//       // List<Course> cat = categories;
-//        return myList.get(position-1).toString(); // Return specific category we want via the ID
-//    }
 
     int randomGenerator(String seed) {
 
