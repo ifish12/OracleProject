@@ -25,10 +25,7 @@ public class CourseListActivity extends Activity {
 
 
     private ListView mNotesListView;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +37,6 @@ public class CourseListActivity extends Activity {
             @Override
             public void onAsyncPostExecute(List<Course> result) {
 
-                /* populating the course data has to take place here,
-                    because the async tasks runs while the next set of
-                     code executes, which is no good.
-
-                     so ... when the async task is done executing,
-                     this section of code will run
-                */
                 mCourses = result;
 
                 Log.d("JSON Data:", mCourses.toString());
