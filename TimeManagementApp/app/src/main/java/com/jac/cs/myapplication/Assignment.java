@@ -1,45 +1,79 @@
 package com.jac.cs.myapplication;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Assignment {
 
-    private long id;
-    private String title;
-    private String description;
+    private static SimpleDateFormat serverFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
+    private static SimpleDateFormat uiFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm");
+
+    private String url;
+    private String name;
+    private Date dueDate;
+    private int worth;
+    private long courseid;
 
     public Assignment() {
     }
 
-    public Assignment(String title, String description) {
-        this.title = title;
-        this.description = description;
+    public String getUrl() {
+        return url;
     }
 
-    public long getId() {
-        return id;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public String toString() {
-        return title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-
-    public String getDescription() {
-        return description;
+    public Date getDueDate() {
+        return dueDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDueDate(String dueDateStr) {
+        try {
+            this.dueDate = uiFormat.parse(dueDateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public String getTitle() {
-        return title;
+    public int getWorth() {
+        return worth;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setWorth(int worth) {
+        this.worth = worth;
     }
+
+    public long getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(long courseid) {
+        this.courseid = courseid;
+    }
+
+    public String toJson() {
+        /* ex:
+
+        {
+          "name": "TestAsg",
+          "dueDate": "2015-12-24T12:00:00.000+0500",
+           "worth":100,
+           "courseid":1
+        }
+
+        */
+        return serverFormat.format(dueDate);
+    }
+
 }
