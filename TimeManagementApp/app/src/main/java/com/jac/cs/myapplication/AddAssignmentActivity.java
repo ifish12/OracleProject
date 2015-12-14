@@ -102,7 +102,20 @@ public class AddAssignmentActivity extends Activity {
 
     public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
-        static EditText DateEdit;
+
+        private EditText dateEdit;
+
+        public DatePickerFragment() {
+        }
+
+        public EditText getDateEdit() {
+            return dateEdit;
+        }
+
+        public void setDateEdit(EditText dateEdit) {
+            this.dateEdit = dateEdit;
+        }
+
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker
@@ -116,11 +129,13 @@ public class AddAssignmentActivity extends Activity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            DateEdit.setText(day + "/" + (month + 1) + "/" + year);
+            dateEdit.setText(day + "/" + (month + 1) + "/" + year);
         }
     }
     public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
+        DatePickerFragment newFragment = new DatePickerFragment();
+        newFragment.setDateEdit((EditText) v);
         newFragment.show(getFragmentManager(), "datePicker");
     }
+
 }
