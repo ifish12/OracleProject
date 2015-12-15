@@ -52,8 +52,6 @@ public class AddAssignmentActivity extends Activity {
         task.execute("Programming");
 
 
-
-
     }
 
     @Override

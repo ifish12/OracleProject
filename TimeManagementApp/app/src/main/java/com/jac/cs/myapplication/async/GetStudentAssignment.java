@@ -17,6 +17,7 @@ import org.json.JSONTokener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 //To fix
 public class GetStudentAssignment extends AsyncTask<String, Void, List<String>> {
@@ -56,6 +57,10 @@ public class GetStudentAssignment extends AsyncTask<String, Void, List<String>> 
             for(int i = 0; i < assignments.length(); i++){
                 String assignmentName = assignments.getJSONObject(i).getString("name");
                 studentClasses.add(assignmentName);
+                //String assignmentId = assignments.getJSONObject(i).getJSONObject("_links").getJSONObject("self").getJSONObject("href").toString();
+                //char finalAssignmentId = assignmentId.charAt(assignmentId.length() - 1);
+                //Log.d("JSON Data:", String.valueOf(finalAssignmentId));
+
             }
 
 
