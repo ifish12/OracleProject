@@ -1,5 +1,8 @@
 package com.jac.cs.myapplication;
 
+import com.jac.cs.myapplication.utility.HttpJsonRequest;
+import com.jac.cs.myapplication.utility.HttpResponse;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +10,7 @@ import java.util.Date;
 /**
  * Created by 1327527 on 2015-12-15.
  */
-public class asgdetail {
+public class Asgdetail {
     private static SimpleDateFormat serverFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
     private static SimpleDateFormat uiFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 
@@ -17,7 +20,7 @@ public class asgdetail {
     private int worth;
     private long courseid;
 
-    public asgdetail() {
+    public Asgdetail() {
     }
 
     public String getUrl() {
@@ -65,6 +68,8 @@ public class asgdetail {
     }
 
     public String toJson() {
+
+        //HttpResponse response = HttpJsonRequest.make(PREFIX + "/post", "POST", post.toJson());
         /* ex:
 
         {
@@ -75,6 +80,7 @@ public class asgdetail {
         }
 
         */
+
         return serverFormat.format(dueDate);
     }
 

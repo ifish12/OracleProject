@@ -24,8 +24,6 @@ public class AddCourseActivity extends Activity {
     private List<Course>           mCourses;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

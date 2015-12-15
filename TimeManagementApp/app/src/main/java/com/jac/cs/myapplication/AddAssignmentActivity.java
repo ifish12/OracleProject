@@ -8,22 +8,52 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.jac.cs.myapplication.async.AsyncResponse;
+import com.jac.cs.myapplication.async.GetAllCourses;
+import com.jac.cs.myapplication.async.GetStudentAssignment;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddAssignmentActivity extends Activity {
+
+    private ArrayAdapter<Course> mAdapter;
+    private List<String> assignmentNames = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_assignment);
+
+        GetStudentAssignment task = new GetStudentAssignment(new AsyncResponse<List<String>>() {
+            @Override
+            public void onAsyncPostExecute(List<String> result) {
+
+                assignmentNames = result;
+                Spinner lv = (Spinner) findViewById(R.id.assignmentListView);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddAssignmentActivity.this, android.R.layout.simple_list_item_1, assignmentNames);
+                lv.setAdapter(arrayAdapter);
+
+            }
+        });
+        task.execute("Programming");
+
+
+
+
     }
 
     @Override
@@ -31,6 +61,11 @@ public class AddAssignmentActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_assignment, menu);
         return true;
+
+
+
+
+
     }
 
     @Override
@@ -60,7 +95,7 @@ public class AddAssignmentActivity extends Activity {
     }
 
     public void save(View view) {
-
+        //Todo
         Context context = getApplicationContext();
         CharSequence text = "The assignment has been saved successfully!";
         int duration = Toast.LENGTH_SHORT;
