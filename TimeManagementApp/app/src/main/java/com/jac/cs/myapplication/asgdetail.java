@@ -64,12 +64,9 @@ public class Asgdetail {
         //HttpResponse response = HttpJsonRequest.make(PREFIX + "/post", "POST", post.toJson());
          /*ex:
 
-        {
-          "name": "TestAsg",
-          "dueDate": "2015-12-24T12:00:00.000+0500",
-           "worth":100,
-           "courseid":1
-        }*/
+        {"studentid":"1500001", "assignmentid":"1", "goal":"60"}'
+
+        */
 
 
 

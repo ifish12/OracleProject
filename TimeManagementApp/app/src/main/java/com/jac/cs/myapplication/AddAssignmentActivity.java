@@ -23,12 +23,13 @@ import android.widget.Toast;
 import com.jac.cs.myapplication.async.AsyncResponse;
 import com.jac.cs.myapplication.async.GetAllCourses;
 import com.jac.cs.myapplication.async.GetStudentAssignment;
+import com.jac.cs.myapplication.async.SaveAssignmentTask;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AddAssignmentActivity extends Activity {
+public class AddAssignmentActivity extends Activity implements AsyncResponse<Boolean> {
 
     private static String STUDENT_ID = "1500001"; // TODO this is a stub until a login is completed
 
@@ -89,12 +90,18 @@ public class AddAssignmentActivity extends Activity {
     }
 
     public void save(View view) {
-        //Todo
 
-        //SaveAssignmentTask task = new SaveAssignmentTask();
-        //task.execute();
+        Asgdetail asgdetail = new Asgdetail();
+        //Todo fill this object up
 
+        SaveAssignmentTask task = new SaveAssignmentTask(this);
+        task.execute(asgdetail);
 
+    }
+
+    @Override
+    public void onAsyncPostExecute(Boolean result) {
+        // TODO if result == true: we're done!
         Context context = getApplicationContext();
         CharSequence text = "The assignment has been saved successfully!";
         int duration = Toast.LENGTH_SHORT;

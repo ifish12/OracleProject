@@ -32,6 +32,15 @@ public class SaveAssignmentTask extends AsyncTask<Asgdetail, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Asgdetail... params) {
+        Asgdetail asgdetail = params[0];
+
+        HttpResponse response = null;
+        try {
+            response = HttpJsonRequest.make("http://159.203.29.133:9998/studentassignments", "POST", asgdetail.toJson());
+            return response.getStatus() == 201;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }
