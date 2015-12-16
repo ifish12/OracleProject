@@ -30,27 +30,27 @@ import java.util.List;
 
 public class AddAssignmentActivity extends Activity {
 
-    private ArrayAdapter<Course> mAdapter;
-    private List<String> assignmentNames = new ArrayList<String>();
+    private static String STUDENT_ID = "1500001"; // TODO this is a stub until a login is completed
+
+    private List<Assignment> assignmentNames = new ArrayList<Assignment>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_assignment);
 
-        GetStudentAssignment task = new GetStudentAssignment(new AsyncResponse<List<String>>() {
+        GetStudentAssignment task = new GetStudentAssignment(new AsyncResponse<List<Assignment>>() {
             @Override
-            public void onAsyncPostExecute(List<String> result) {
+            public void onAsyncPostExecute(List<Assignment> result) {
 
                 assignmentNames = result;
                 Spinner lv = (Spinner) findViewById(R.id.assignmentListView);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(AddAssignmentActivity.this, android.R.layout.simple_list_item_1, assignmentNames);
+                ArrayAdapter<Assignment> arrayAdapter = new ArrayAdapter<Assignment>(AddAssignmentActivity.this, android.R.layout.simple_list_item_1, assignmentNames);
                 lv.setAdapter(arrayAdapter);
 
             }
         });
         task.execute("Programming");
-
 
     }
 
@@ -59,10 +59,6 @@ public class AddAssignmentActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_add_assignment, menu);
         return true;
-
-
-
-
 
     }
 
@@ -94,6 +90,11 @@ public class AddAssignmentActivity extends Activity {
 
     public void save(View view) {
         //Todo
+
+        //SaveAssignmentTask task = new SaveAssignmentTask();
+        //task.execute();
+
+
         Context context = getApplicationContext();
         CharSequence text = "The assignment has been saved successfully!";
         int duration = Toast.LENGTH_SHORT;
@@ -144,7 +145,7 @@ public class AddAssignmentActivity extends Activity {
     }
 
 
-    public static class DatePickerFragment extends DialogFragment
+    /*public static class DatePickerFragment extends DialogFragment
             implements DatePickerDialog.OnDateSetListener {
 
         private EditText dateEdit;
@@ -180,6 +181,6 @@ public class AddAssignmentActivity extends Activity {
         DatePickerFragment newFragment = new DatePickerFragment();
         newFragment.setDateEdit((EditText) v);
         newFragment.show(getFragmentManager(), "datePicker");
-    }
+    }*/
 
 }

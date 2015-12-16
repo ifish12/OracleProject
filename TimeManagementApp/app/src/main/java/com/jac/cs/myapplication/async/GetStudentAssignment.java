@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.jac.cs.myapplication.Assignment;
-import com.jac.cs.myapplication.Course;
-import com.jac.cs.myapplication.async.AsyncResponse;
 import com.jac.cs.myapplication.utility.HttpJsonRequest;
 import com.jac.cs.myapplication.utility.HttpResponse;
 
@@ -17,26 +15,25 @@ import org.json.JSONTokener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 
-//To fix
-public class GetStudentAssignment extends AsyncTask<String, Void, List<String>> {
 
-    private AsyncResponse<List<String>> delegate;
+public class GetStudentAssignment extends AsyncTask<String, Void, List<Assignment>> {
 
-    public GetStudentAssignment(AsyncResponse<List<String>> delegate) {
+    private AsyncResponse<List<Assignment>> delegate;
+
+    public GetStudentAssignment(AsyncResponse<List<Assignment>> delegate) {
         this.delegate = delegate;
     }
 
     @Override
-    protected void onPostExecute(List<String> courses) {
+    protected void onPostExecute(List<Assignment> courses) {
         delegate.onAsyncPostExecute(courses);
     }
 
     @Override
-    protected List<String> doInBackground(String... params) {
+    protected List<Assignment> doInBackground(String... params) {
 
-        List<String> studentClasses = new ArrayList<String>();
+        List<Assignment> studentClasses = new ArrayList<>();
         try {
             String courseName = params[0];
 
@@ -55,15 +52,19 @@ public class GetStudentAssignment extends AsyncTask<String, Void, List<String>> 
             Log.d("Assignments", assignments.toString());
 
             for(int i = 0; i < assignments.length(); i++){
+                Assignment assignment = new Assignment();
                 String assignmentName = assignments.getJSONObject(i).getString("name");
-                studentClasses.add(assignmentName);
-                //String assignmentId = assignments.getJSONObject(i).getJSONObject("_links").getJSONObject("self").getJSONObject("href").toString();
+                assignment.setTitle(assignmentName);
+
+                String assignmentId = assignments.getJSONObject(i).getJSONObject("_links").getJSONObject("self").getString("href");
+                assignment.setId(assignmentId);
+
+                //Log.d("FOO", assignmentId);
                 //char finalAssignmentId = assignmentId.charAt(assignmentId.length() - 1);
                 //Log.d("JSON Data:", String.valueOf(finalAssignmentId));
 
+                studentClasses.add(assignment);
             }
-
-
 
         } catch (IOException e) {
             e.printStackTrace();
