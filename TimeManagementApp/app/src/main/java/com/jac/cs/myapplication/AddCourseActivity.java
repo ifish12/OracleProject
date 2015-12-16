@@ -23,22 +23,15 @@ public class AddCourseActivity extends Activity {
 
     private List<Course>           mCourses;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course);
 
-
-
         GetAllCourses task = new GetAllCourses(new AsyncResponse<List<Course>>() {
             @Override
             public void onAsyncPostExecute(List<Course> result) {
-
                 mCourses = result;
-                Log.d("JSON Data:", mCourses.toString());
                 mAdapter = new ArrayAdapter<Course>(AddCourseActivity.this,
                         R.layout.spinner_row_main,
                         mCourses);
@@ -49,7 +42,6 @@ public class AddCourseActivity extends Activity {
             }
         });
         task.execute();
-
 
     }
 

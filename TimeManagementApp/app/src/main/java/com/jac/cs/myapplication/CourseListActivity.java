@@ -23,9 +23,7 @@ public class CourseListActivity extends Activity {
 
     private List<Course> mCourses;
 
-
     private ListView mNotesListView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
