@@ -131,8 +131,8 @@ public class AddAssignmentActivity extends Activity implements AsyncResponse<Boo
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current time as the default values for the picker
             final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
+            int hour = c.get(Calendar.HOUR_OF_DAY);  //get hour
+            int minute = c.get(Calendar.MINUTE);   //get minute
 
             // Create a new instance of TimePickerDialog and return it
             return new TimePickerDialog(getActivity(), this, hour, minute,  true); //DateFormat.is24HourFormat(getActivity()));
@@ -140,7 +140,7 @@ public class AddAssignmentActivity extends Activity implements AsyncResponse<Boo
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            timeEdit.setText(hourOfDay + "h" + minute + "m");
+            timeEdit.setText(hourOfDay + "h" + minute + "m");  //put the hour and minute on the edit text
         }
     }
 

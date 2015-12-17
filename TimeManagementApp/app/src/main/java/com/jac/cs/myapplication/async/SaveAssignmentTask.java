@@ -37,7 +37,7 @@ public class SaveAssignmentTask extends AsyncTask<Asgdetail, Void, Boolean> {
         HttpResponse response = null;
         try {
             response = HttpJsonRequest.make("http://159.203.29.133:9998/studentassignments", "POST", asgdetail.toJson());
-            return response.getStatus() == 201;
+            return response.getStatus() == 201;  //success status
         } catch (IOException e) {
             e.printStackTrace();
         }
