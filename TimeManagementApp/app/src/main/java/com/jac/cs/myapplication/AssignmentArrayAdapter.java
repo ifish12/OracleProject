@@ -44,9 +44,9 @@ public class AssignmentArrayAdapter extends ArrayAdapter<Assignment>{
         LabeledCircleView circleView = (LabeledCircleView) newRow.findViewById(R.id.circle_view);
 
         Assignment assignment = getItem(position);
-        titleTextView.setText(assignment.getTitle());
-        descriptionTextView.setText(assignment.getDescription());
-        circleView.setLabel(assignment.getTitle().charAt(0));
+        titleTextView.setText(assignment.getName());
+        descriptionTextView.setText(assignment.getDueDate());
+        circleView.setLabel(assignment.getName().charAt(0));
 
         Random r = new Random();
         circleView.setColor(r.nextInt(255), r.nextInt(255), r.nextInt(255));

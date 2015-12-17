@@ -52,6 +52,7 @@ public class CourseListActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent temp = new Intent(view.getContext(), AssignmentListActivity.class);
+                temp.putExtra("courseId", String.valueOf(position+1));
                 startActivity(temp);
             }
         });
