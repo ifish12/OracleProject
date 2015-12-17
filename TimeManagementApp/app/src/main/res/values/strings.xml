@@ -17,4 +17,6 @@
     <string name="AssignmentStatus">Status</string>
     <string name="AssignmentDueDate">Due Date:</string>
     <string name="action_placeholder">temp</string>
+    <string name="DueDateNew">Due Date:</string>
+    <string name="AssignmentNameNew">Name:</string>
 </resources>

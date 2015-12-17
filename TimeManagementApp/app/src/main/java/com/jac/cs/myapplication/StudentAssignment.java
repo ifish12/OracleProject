@@ -1,17 +1,48 @@
 package com.jac.cs.myapplication;
 
-/**
- * Created by mahhcks on 2015-12-16.
- */
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class StudentAssignment {
     private String assignmentName;
     private String dueDate;
     private String timeSpent;
     private String worth;
     private String goal;
+    private String studentId;
+    private String assignmentId;
+
+    public String getAssignmentId() {
+        return assignmentId;
+    }
+
+    public void setAssignmentId(String assignmentId) {
+        this.assignmentId = assignmentId;
+    }
 
     public String getAssignmentName() {
         return assignmentName;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public static String toJson(StudentAssignment a) {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append("\"studentid\":" + "\"" + a.getStudentId() + "\",");
+        sb.append("\"assignmentid\":" + "\"" + a.getAssignmentId() + "\",");
+        sb.append("\"timespent\":" + "\"" + a.getTimeSpent() + "\",");
+        sb.append("\"goal\":" + "\"" + a.getGoal() + "\"");
+        sb.append("}");
+
+        return sb.toString();
     }
 
     public void setAssignmentName(String assignmentName) {
@@ -19,7 +50,11 @@ public class StudentAssignment {
     }
 
     public String getDueDate() {
-        return dueDate;
+        if (dueDate.equals("null")) {
+            return "TBA";
+        } else {
+            return dueDate;
+        }
     }
 
     public void setDueDate(String dueDate) {
@@ -35,8 +70,9 @@ public class StudentAssignment {
     }
 
     public String getWorth() {
-        if (worth == null) {
-            return "TBD";
+
+        if(worth.equals("null")) {
+            return "TBA";
         } else {
             return worth;
         }
