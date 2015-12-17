@@ -3,17 +3,22 @@ package com.jac.cs.myapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.jac.cs.myapplication.async.AsyncResponse;
+import com.jac.cs.myapplication.async.GetCourseAssignments;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AssignmentListActivity extends Activity {
 
+    private List<Assignment> mAssignments;
     private ListView assList;
 
     @Override
@@ -22,15 +27,20 @@ public class AssignmentListActivity extends Activity {
         setContentView(R.layout.activity_assignment_list);
 
         assList = (ListView) findViewById(R.id.listView_assignments);
+        Intent intent = getIntent();
+        String courseId = intent.getStringExtra("courseId");
+        Log.d("courseId:", courseId);
 
-        final List<Assignment> assignmentList = new ArrayList<>();
-        assignmentList.add(new Assignment("Assignment 1", "This is the first assignment"));
-        assignmentList.add(new Assignment("Assignment 2", "This is the second assignment"));
-        assignmentList.add(new Assignment("Assignment 3", "This is the third assignment"));
-        assignmentList.add(new Assignment("Assignment 4", "This is the fourth assignment"));
-
-        AssignmentArrayAdapter adapter = new AssignmentArrayAdapter(this, assignmentList);
-        assList.setAdapter(adapter);
+        GetCourseAssignments task = new GetCourseAssignments(new AsyncResponse<List<Assignment>>() {
+            @Override
+            public void onAsyncPostExecute(List<Assignment> result) {
+                mAssignments = result;
+                //Log.d("JSON Data:", mAssignments.toString());
+                AssignmentArrayAdapter adapter = new AssignmentArrayAdapter(AssignmentListActivity.this, mAssignments);
+                assList.setAdapter(adapter);
+            }
+        });
+        task.execute(courseId);
 
         assList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
